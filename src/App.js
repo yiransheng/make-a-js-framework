@@ -1,7 +1,12 @@
 import React from "./lib";
 
 function Title(props) {
-  return <h1>{props.children}</h1>
+  return (
+    <div>
+      <h1>{props.children}</h1>
+      <hr />
+    </div>
+  );
 }
 
 export default function App(state) {
