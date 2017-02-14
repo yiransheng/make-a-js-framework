@@ -1,6 +1,12 @@
 import {entries} from './utils';
 
+function flatten(array) {
+  const arrays = array.map(x => Array.isArray(x) ? x : [x]);
+  return [].concat(...arrays);
+}
+
 function createElement(type, props, ...children) {
+  children = flatten(children);
   if (typeof type === "string") {
     return createPrimitiveElement(type, props, children);
   }
