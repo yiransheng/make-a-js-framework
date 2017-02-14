@@ -27,6 +27,9 @@ export default function App(state) {
         value={state.toString()}
         onChange={e => ({ type: "CHANGE_COUNTER", payload: e.target.value })}
       />
+      <button onClick={() => ({ type: "CHANGE_COUNTER", payload:0 })}>
+        Reset
+      </button>
     </div>
   );
 }
