@@ -1,9 +1,10 @@
 import React from "./lib";
 
 function Title(props) {
+  const {counter, children} = props;
   return (
     <div>
-      <h1>{props.children}</h1>
+      <h1>{children}<sup>{counter.toString()}</sup></h1>
       <hr />
     </div>
   );
@@ -12,14 +13,16 @@ function Title(props) {
 export default function App(state) {
   return (
     <div>
-      <Title>Counter Example</Title>
+      <Title counter={state}>
+        Counter Example
+      </Title>
       <button onClick={() => ({ type: "DECREMENT" })}>
         -
       </button>
-      <span>{state.toString()}</span>
       <button onClick={() => ({ type: "INCREMENT" })}>
         +
       </button>
+      <span> Counter: </span>
       <input
         value={state.toString()}
         onChange={e => ({ type: "CHANGE_COUNTER", payload: e.target.value })}
