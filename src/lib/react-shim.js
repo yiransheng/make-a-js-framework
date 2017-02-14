@@ -1,3 +1,5 @@
+import {entries} from './utils';
+
 function createElement(type, props, ...children) {
   if (typeof type === "string") {
     return createPrimitiveElement(type, props, children);
@@ -11,9 +13,17 @@ function createElement(type, props, ...children) {
 }
 
 function createPrimitiveElement(tag, props, children='') {
+  const attrs = {};
+  if (props) {
+    for (const [key, value] of entries(props)) {
+      if (key && key.charAt(0) !== '_' /* jsx debug properties */) {
+        attrs[key] = value;
+      }
+    }
+  }
   return {
     tag,
-    attrs: props || {},
+    attrs,
     children: children || []
   };
 }

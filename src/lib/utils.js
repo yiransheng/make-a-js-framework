@@ -4,9 +4,7 @@ export function curry(fn) {
 
 export function* entries(object = {}) {
   for (const key of Object.keys(object)) {
-    if (key && key.charAt(0) !== '_') {
-      yield [key, object[key]];
-    }
+    yield [key, object[key]];
   }
 }
 
