@@ -5,4 +5,4 @@ import reducer from "./reducer";
 
 const main = app(App, reducer, document.getElementById("root"));
 
-main(0).runIO();
+main(/* initialState = */ 0).runIO();
